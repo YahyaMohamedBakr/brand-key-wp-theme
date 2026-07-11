@@ -100,8 +100,7 @@ function brandkey_scripts() {
         // Main JavaScript
         wp_enqueue_script( 'brandkey-script', BRANDKEY_URI . '/assets/js/shared.js', array(), BRANDKEY_VERSION, true );
 
-        // Includes JavaScript (header/footer/components loader)
-        wp_enqueue_script( 'brandkey-includes', BRANDKEY_URI . '/assets/js/includes.js', array(), BRANDKEY_VERSION, true );
+        // NOTE: includes.js مش محمّل في ووردبريس — header.php و footer.php بيرندروا الهيدر/الفوتر مباشرة
 
         // Pass data to JS
         wp_localize_script( 'brandkey-script', 'brandkeyData', array(
