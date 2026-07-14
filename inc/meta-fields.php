@@ -37,9 +37,12 @@ function bk_register_meta_boxes() {
  */
 function bk_hide_front_page_meta_boxes( $hidden, $screen, $use_defaults ) {
         if ( $screen->base === 'post' && $screen->post_type === 'page' ) {
-                $template = get_post_meta( get_the_ID(), '_wp_page_template', true );
-                if ( $template !== 'front-page.php' && empty( $template ) ) {
-                        // مش الصفحة الرئيسية — خبّي كل meta boxes بتاعة front page
+                $post_id = isset( $_GET['post'] ) ? intval( $_GET['post'] ) : ( isset( $_POST['post_ID'] ) ? intval( $_POST['post_ID'] ) : 0 );
+                $template = $post_id ? get_post_meta( $post_id, '_wp_page_template', true ) : '';
+
+                // لو مش الصفحة الرئيسية (default template أو قالب تاني) — خبّي كل meta boxes بتاعة front page
+                $is_front_page = ( $template === 'front-page.php' || ( empty( $template ) && $post_id == get_option( 'page_on_front' ) ) );
+                if ( ! $is_front_page ) {
                         $front_boxes = array( 'bk_front_hero', 'bk_front_services', 'bk_front_sectors', 'bk_front_pricing', 'bk_front_testimonials', 'bk_front_faq', 'bk_front_cta' );
                         foreach ( $front_boxes as $box ) {
                                 if ( ! in_array( $box, $hidden ) ) {
@@ -47,13 +50,15 @@ function bk_hide_front_page_meta_boxes( $hidden, $screen, $use_defaults ) {
                                 }
                         }
                 }
-                // لو مش قالب صفحة داخلية — خبّي الـ inner hero + contact
+
+                // لو مش قالب صفحة داخلية — خبّي الـ inner hero
                 $inner_templates = array( 'page-templates/about.php', 'page-templates/integration.php', 'page-templates/training.php', 'page-templates/consulting.php', 'page-templates/pricing.php', 'page-templates/contact.php' );
                 if ( ! in_array( $template, $inner_templates ) ) {
                         if ( ! in_array( 'bk_inner_hero', $hidden ) ) {
                                 $hidden[] = 'bk_inner_hero';
                         }
                 }
+
                 // لو مش قالب contact — خبّي معلومات التواصل
                 if ( $template !== 'page-templates/contact.php' ) {
                         if ( ! in_array( 'bk_contact_info', $hidden ) ) {
