@@ -11,6 +11,13 @@ define( 'BK_VERSION', '1.0.0' );
 define( 'BK_URI', get_template_directory_uri() );
 
 /**
+ * Include files
+ */
+require_once get_template_directory() . '/inc/sections.php';
+require_once get_template_directory() . '/inc/customizer.php';
+require_once get_template_directory() . '/inc/seeder.php';
+
+/**
  * Theme setup
  */
 function bk_setup() {
@@ -22,7 +29,6 @@ function bk_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'responsive-embeds' );
 
-	// قوائم التنقل
 	register_nav_menus( array(
 		'nav_services'    => __( 'قائمة الخدمات (في الناف)', 'brandkey' ),
 		'nav_sectors'     => __( 'قائمة القطاعات (في الناف)', 'brandkey' ),
@@ -40,54 +46,11 @@ add_action( 'after_setup_theme', 'bk_setup' );
  * Enqueue scripts and styles
  */
 function bk_scripts() {
-	// Google Fonts
 	wp_enqueue_style( 'bk-fonts', 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap', array(), null );
-
-	// CSS الرئيسي (من التمبلت زي ما هو)
 	wp_enqueue_style( 'bk-style', BK_URI . '/assets/css/shared.css', array(), BK_VERSION );
-
-	// JS الرئيسي (من التمبلت زي ما هو)
 	wp_enqueue_script( 'bk-script', BK_URI . '/assets/js/shared.js', array(), BK_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'bk_scripts' );
-
-/**
- * Customizer
- */
-function bk_customize_register( $wp_customize ) {
-	// التواصل
-	$wp_customize->add_section( 'bk_contact', array(
-		'title' => __( 'معلومات التواصل', 'brandkey' ),
-		'priority' => 30,
-	) );
-
-	$fields = array(
-		'bk_email'         => array( 'label' => __( 'البريد الإلكتروني', 'brandkey' ), 'default' => 'info@brandkey.com', 'type' => 'email' ),
-		'bk_phone'         => array( 'label' => __( 'رقم الهاتف (للاتصال)', 'brandkey' ), 'default' => '+201001234567', 'type' => 'text' ),
-		'bk_phone_display' => array( 'label' => __( 'رقم الهاتف (للعرض)', 'brandkey' ), 'default' => '+20 100 123 4567', 'type' => 'text' ),
-		'bk_address'       => array( 'label' => __( 'العنوان', 'brandkey' ), 'default' => 'القاهرة | مصر، شارع التحرير', 'type' => 'text' ),
-		'bk_map_url'       => array( 'label' => __( 'رابط الخريطة', 'brandkey' ), 'default' => 'https://maps.google.com', 'type' => 'url' ),
-		'bk_about_text'    => array( 'label' => __( 'نبذة عن الشركة (الفوتر)', 'brandkey' ), 'default' => 'شركة متخصصة في التسويق الرقمي وخدمات التكنولوجيا، أسست في عام 2011. نسعى دائماً لتقديم حلول مبتكرة تساعد عملائنا على النمو والنجاح.', 'type' => 'textarea' ),
-	);
-
-	foreach ( $fields as $id => $f ) {
-		$wp_customize->add_setting( $id, array( 'default' => $f['default'], 'sanitize_callback' => 'sanitize_text_field' ) );
-		$wp_customize->add_control( $id, array( 'label' => $f['label'], 'section' => 'bk_contact', 'type' => $f['type'] ) );
-	}
-
-	// السوشيال
-	$wp_customize->add_section( 'bk_social', array(
-		'title' => __( 'روابط التواصل الاجتماعي', 'brandkey' ),
-		'priority' => 31,
-	) );
-
-	$socials = array( 'facebook' => 'فيسبوك', 'instagram' => 'إنستجرام', 'linkedin' => 'لينكد إن', 'twitter' => 'إكس (تويتر)' );
-	foreach ( $socials as $key => $label ) {
-		$wp_customize->add_setting( 'bk_' . $key, array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
-		$wp_customize->add_control( 'bk_' . $key, array( 'label' => $label, 'section' => 'bk_social', 'type' => 'url' ) );
-	}
-}
-add_action( 'customize_register', 'bk_customize_register' );
 
 /**
  * Helper: output icon URL
@@ -97,8 +60,7 @@ function bk_icon( $name ) {
 }
 
 /**
- * Nav Walker — يضيف SVG icons للروابط السريعة بناءً على CSS classes
- * المستخدم يضيف class زي "icon-home" في محرر القائمة
+ * Nav Walker — SVG icons via CSS classes (icon-home, icon-consulting, etc.)
  */
 class BK_Nav_Walker extends Walker_Nav_Menu {
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -128,13 +90,10 @@ class BK_Nav_Walker extends Walker_Nav_Menu {
  * Get inline SVG for nav icon
  */
 function bk_get_nav_icon( $name ) {
-	// نفس الـ SVGs اللي في التمبلت
 	$svg = @file_get_contents( get_template_directory() . '/assets/icons/' . $name . '.svg' );
 	if ( $svg ) {
-		// شيل width/height عشان ياخد حجم CSS
 		$svg = preg_replace( '/\s+width="[^"]*"/', '', $svg );
 		$svg = preg_replace( '/\s+height="[^"]*"/', '', $svg );
-		// replace fill="#F2C94C" بـ currentColor
 		$svg = str_replace( 'fill="#F2C94C"', 'fill="currentColor"', $svg );
 		return $svg;
 	}
