@@ -1,23 +1,25 @@
 <?php
 /**
- * Template Name: consulting
+ * Template Name: استشارات التسويق
  * @package BrandKey
  */
 get_header();
-?>
-<main class="page-content" id="pageContent">
 
-  <!-- inner hero -->
-  <div id="inner-hero-include"
-       data-title="استشارات تصنع الفارق"
-       data-desc="خبراؤنا يقدمون لك استشارات استراتيجية مخصصة تساعدك على اتخاذ القرارات الصحيحة وتحقيق نمو قابل للقياس."
-       data-primary-text="احجز استشارتك"
-       data-primary-icon="<?php bk_icon('start-icon.svg'); ?>"
-       data-primary-href="<?php echo esc_url(home_url('/contact')); ?>"
-       data-ghost-text="تعرف على أنواع الاستشارات"
-       data-ghost-icon="<?php bk_icon('humbleicons-arrow-up.svg'); ?>"
-       data-ghost-href="#">
-  </div>
+// بيانات الهيرو لكل صفحة
+$hero_data = array(
+  'title'        => 'استشارات تصنع الفارق',
+  'desc'         => 'خبراؤنا يقدمون لك استشارات استراتيجية مخصصة تساعدك على اتخاذ القرارات الصحيحة وتحقيق نمو قابل للقياس.',
+  'primary_text' => 'احجز استشارتك',
+  'primary_href' => home_url( '/contact' ),
+  'ghost_text'   => 'تعرف على أنواع الاستشارات',
+  'ghost_href'   => '#',
+);
+
+set_query_var( 'bk_inner_hero', $hero_data );
+?>
+
+<main class="page-content" id="pageContent">
+  <?php get_template_part( 'template-parts/inner-hero' ); ?>
 
   <!-- محتوى الصفحة -->
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); the_content(); endwhile; endif; ?>
