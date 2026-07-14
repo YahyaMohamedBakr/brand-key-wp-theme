@@ -18,6 +18,7 @@ set_query_var( 'bk_inner_hero', $hero_data );
 ?>
 
 <main class="page-content" id="pageContent">
+  <?php get_template_part( 'template-parts/inner-hero' ); ?>
 
     <!-- ===================== سيكشن 1: لماذا منظومة Brand Key؟ ===================== -->
     <section class="about-explore" id="trainingExplore">
