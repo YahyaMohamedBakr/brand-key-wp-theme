@@ -1,33 +1,36 @@
 <?php
 /**
- * Inner Hero — مطابق للتمبلت بالظبط
- * بدل includes.js اللي بياخد data-* ويبني HTML
+ * Inner Hero — يقرأ من ACF لو موجود، وإلا من query_var
  *
  * @package BrandKey
  */
 
-// اقرأ الـ data attributes من الـ div
+// لو فيه query_var (من page template مباشر)
 $hero_holder = get_query_var( 'bk_inner_hero' );
-if ( ! $hero_holder ) {
-	// لو مفيش query_var، اقرأ من الـ global post
-	$hero_holder = array(
-		'title'        => get_post_meta( get_the_ID(), '_bk_hero_title', true ) ?: get_the_title(),
-		'desc'         => get_post_meta( get_the_ID(), '_bk_hero_desc', true ),
-		'primary_text' => get_post_meta( get_the_ID(), '_bk_hero_primary_text', true ) ?: __( 'ابدأ الآن', 'brandkey' ),
-		'primary_href' => home_url( '/contact' ),
-		'ghost_text'   => get_post_meta( get_the_ID(), '_bk_hero_ghost_text', true ),
-		'ghost_href'   => '#',
-		'photo'        => BK_URI . '/assets/icons/inner-hero-photo.png',
-	);
-}
 
-$title        = $hero_holder['title'] ?? '';
-$desc         = $hero_holder['desc'] ?? '';
-$primary_text = $hero_holder['primary_text'] ?? '';
-$primary_href = $hero_holder['primary_href'] ?? home_url( '/contact' );
-$ghost_text   = $hero_holder['ghost_text'] ?? '';
-$ghost_href   = $hero_holder['ghost_href'] ?? '#';
-$photo        = $hero_holder['photo'] ?? BK_URI . '/assets/icons/inner-hero-photo.png';
+if ( $hero_holder ) {
+	$title        = $hero_holder['title'] ?? '';
+	$desc         = $hero_holder['desc'] ?? '';
+	$primary_text = $hero_holder['primary_text'] ?? '';
+	$primary_href = $hero_holder['primary_href'] ?? home_url( '/contact' );
+	$ghost_text   = $hero_holder['ghost_text'] ?? '';
+	$ghost_href   = $hero_holder['ghost_href'] ?? '#';
+	$photo        = $hero_holder['photo'] ?? BK_URI . '/assets/icons/inner-hero-photo.png';
+} else {
+	// اقرأ من ACF
+	$title        = bk_field( 'ih_title', get_the_ID(), get_the_title() );
+	$desc         = bk_field( 'ih_desc', get_the_ID() );
+	$primary_text = bk_field( 'ih_primary_text', get_the_ID(), __( 'ابدأ الآن', 'brandkey' ) );
+	$primary_href = bk_field( 'ih_primary_url', get_the_ID(), '/contact' );
+	$primary_href = $primary_href ? home_url( $primary_href ) : home_url( '/contact' );
+	$ghost_text   = bk_field( 'ih_ghost_text', get_the_ID() );
+	$ghost_url    = bk_field( 'ih_ghost_url', get_the_ID(), '#' );
+	$ghost_href   = $ghost_url ? ( strpos( $ghost_url, 'http' ) === 0 ? $ghost_url : home_url( $ghost_url ) ) : '#';
+
+	// صورة الهيرو من ACF أو الافتراضية
+	$acf_photo = bk_img( 'ih_photo', 'full', get_the_ID() );
+	$photo     = $acf_photo ?: BK_URI . '/assets/icons/inner-hero-photo.png';
+}
 ?>
 
 <section class="inner-hero" id="innerHero">
