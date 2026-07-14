@@ -9,27 +9,28 @@
 $hero_holder = get_query_var( 'bk_inner_hero' );
 
 if ( $hero_holder ) {
-	$title        = $hero_holder['title'] ?? '';
-	$desc         = $hero_holder['desc'] ?? '';
-	$primary_text = $hero_holder['primary_text'] ?? '';
-	$primary_href = $hero_holder['primary_href'] ?? home_url( '/contact' );
-	$ghost_text   = $hero_holder['ghost_text'] ?? '';
-	$ghost_href   = $hero_holder['ghost_href'] ?? '#';
-	$photo        = $hero_holder['photo'] ?? BK_URI . '/assets/icons/inner-hero-photo.png';
+        $title        = $hero_holder['title'] ?? '';
+        $desc         = $hero_holder['desc'] ?? '';
+        $primary_text = $hero_holder['primary_text'] ?? '';
+        $primary_href = $hero_holder['primary_href'] ?? home_url( '/contact' );
+        $ghost_text   = $hero_holder['ghost_text'] ?? '';
+        $ghost_href   = $hero_holder['ghost_href'] ?? '#';
+        $photo        = $hero_holder['photo'] ?? BK_URI . '/assets/icons/inner-hero-photo.png';
 } else {
-	// اقرأ من ACF
-	$title        = bk_field( 'ih_title', get_the_ID(), get_the_title() );
-	$desc         = bk_field( 'ih_desc', get_the_ID() );
-	$primary_text = bk_field( 'ih_primary_text', get_the_ID(), __( 'ابدأ الآن', 'brandkey' ) );
-	$primary_href = bk_field( 'ih_primary_url', get_the_ID(), '/contact' );
-	$primary_href = $primary_href ? home_url( $primary_href ) : home_url( '/contact' );
-	$ghost_text   = bk_field( 'ih_ghost_text', get_the_ID() );
-	$ghost_url    = bk_field( 'ih_ghost_url', get_the_ID(), '#' );
-	$ghost_href   = $ghost_url ? ( strpos( $ghost_url, 'http' ) === 0 ? $ghost_url : home_url( $ghost_url ) ) : '#';
+        // اقرأ من ACF
+        $title        = bk_meta( 'ih_title', get_the_ID(), get_the_title() );
+        $desc         = bk_meta( 'ih_desc', get_the_ID() );
+        $primary_text = bk_meta( 'ih_primary_text', get_the_ID(), __( 'ابدأ الآن', 'brandkey' ) );
+        $primary_href = bk_meta( 'ih_primary_url', get_the_ID(), '/contact' );
+        $primary_href = $primary_href ? home_url( $primary_href ) : home_url( '/contact' );
+        $ghost_text   = bk_meta( 'ih_ghost_text', get_the_ID() );
+        $ghost_url    = bk_meta( 'ih_ghost_url', get_the_ID(), '#' );
+        $ghost_href   = $ghost_url ? ( strpos( $ghost_url, 'http' ) === 0 ? $ghost_url : home_url( $ghost_url ) ) : '#';
 
-	// صورة الهيرو من ACF أو الافتراضية
-	$acf_photo = bk_img( 'ih_photo', 'full', get_the_ID() );
-	$photo     = $acf_photo ?: BK_URI . '/assets/icons/inner-hero-photo.png';
+        // صورة الهيرو من ACF أو الافتراضية
+        $acf_photo_id = bk_meta( 'ih_photo', get_the_ID() );
+        $acf_photo    = $acf_photo_id ? wp_get_attachment_url( $acf_photo_id ) : '';
+        $photo        = $acf_photo ?: BK_URI . '/assets/icons/inner-hero-photo.png';
 }
 ?>
 

@@ -6,12 +6,12 @@
  */
 
 // عنوان وصف السيكشن من ACF أو الافتراضي
-$test_title = bk_field( 'fp_test_title', get_option( 'page_on_front' ), 'ماذا يقول عملاؤنا' );
-$test_desc  = bk_field( 'fp_test_desc', get_option( 'page_on_front' ) );
+$test_title = bk_meta( 'fp_test_title', get_option( 'page_on_front' ), 'ماذا يقول عملاؤنا' );
+$test_desc  = bk_meta( 'fp_test_desc', get_option( 'page_on_front' ) );
 $test_desc  = $test_desc ?: 'إن نجاحهم يعد المعيار الحقيقي لجودة خدماتنا ومنتجاتنا';
 
 // آراء العملاء من ACF repeater
-$testimonials = bk_field( 'fp_test_repeater', get_option( 'page_on_front' ) );
+$testimonials = bk_meta( 'fp_test_repeater', get_option( 'page_on_front' ) );
 
 // لو مفيش ACF، استخدم البيانات الافتراضية
 if ( ! $testimonials ) {

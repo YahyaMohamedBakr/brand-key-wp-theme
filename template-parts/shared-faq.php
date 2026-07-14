@@ -5,11 +5,11 @@
  * @package BrandKey
  */
 
-$faq_title = bk_field( 'fp_faq_title', get_option( 'page_on_front' ), 'الأسئلة الشائعة' );
-$faq_desc  = bk_field( 'fp_faq_desc', get_option( 'page_on_front' ) );
+$faq_title = bk_meta( 'fp_faq_title', get_option( 'page_on_front' ), 'الأسئلة الشائعة' );
+$faq_desc  = bk_meta( 'fp_faq_desc', get_option( 'page_on_front' ) );
 $faq_desc  = $faq_desc ?: 'استكشف أكثر الأسئلة شيوعاً حول خدماتنا وكيف يمكننا مساعده عملك على النمو';
 
-$faqs = bk_field( 'fp_faq_repeater', get_option( 'page_on_front' ) );
+$faqs = bk_meta( 'fp_faq_repeater', get_option( 'page_on_front' ) );
 
 if ( ! $faqs ) {
 	$faqs = array(

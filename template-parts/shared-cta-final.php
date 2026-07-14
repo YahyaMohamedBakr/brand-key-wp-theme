@@ -5,11 +5,11 @@
  * @package BrandKey
  */
 
-$cta_title    = bk_field( 'fp_cta_title', get_option( 'page_on_front' ), 'مستعد تبدأ رحلتك الرقمية!' );
-$cta_desc     = bk_field( 'fp_cta_desc', get_option( 'page_on_front' ) );
+$cta_title    = bk_meta( 'fp_cta_title', get_option( 'page_on_front' ), 'مستعد تبدأ رحلتك الرقمية!' );
+$cta_desc     = bk_meta( 'fp_cta_desc', get_option( 'page_on_front' ) );
 $cta_desc     = $cta_desc ?: 'استشارة مجانية 30 دقيقة مع خبراء براند كي — بنحلل وضعك ونقولك بالظبط إيه اللي محتاجه';
-$cta_btn_text = bk_field( 'fp_cta_btn_text', get_option( 'page_on_front' ), 'تواصل معنا الآن!' );
-$cta_btn_url  = bk_field( 'fp_cta_btn_url', get_option( 'page_on_front' ), '/contact' );
+$cta_btn_text = bk_meta( 'fp_cta_btn_text', get_option( 'page_on_front' ), 'تواصل معنا الآن!' );
+$cta_btn_url  = bk_meta( 'fp_cta_btn_url', get_option( 'page_on_front' ), '/contact' );
 $cta_btn_url  = $cta_btn_url ? home_url( $cta_btn_url ) : home_url( '/contact' );
 ?>
 
