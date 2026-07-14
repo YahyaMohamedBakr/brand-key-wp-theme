@@ -8,10 +8,10 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> dir="rtl">
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<?php wp_head(); ?>
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+        <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -83,10 +83,10 @@
         </h3>
         <?php
         if ( has_nav_menu( 'nav_services' ) ) {
-			wp_nav_menu( array( 'theme_location' => 'nav_services', 'container' => false, 'menu_class' => 'nav-section-list', 'depth' => 1 ) );
-		} else {
-			echo '<ul class="nav-section-list"><li><a href="#">' . esc_html__( 'أضف قائمة من لوحة التحكم', 'brandkey' ) . '</a></li></ul>';
-		}
+                        wp_nav_menu( array( 'theme_location' => 'nav_services', 'container' => false, 'menu_class' => 'nav-section-list', 'depth' => 1 ) );
+                } else {
+                        echo '<ul class="nav-section-list"><li><a href="#">' . esc_html__( 'أضف قائمة من لوحة التحكم', 'brandkey' ) . '</a></li></ul>';
+                }
         ?>
       </div>
 
@@ -101,10 +101,10 @@
         </h3>
         <?php
         if ( has_nav_menu( 'nav_sectors' ) ) {
-			wp_nav_menu( array( 'theme_location' => 'nav_sectors', 'container' => false, 'menu_class' => 'nav-section-list', 'depth' => 1 ) );
-		} else {
-			echo '<ul class="nav-section-list"><li><a href="#">' . esc_html__( 'أضف قائمة من لوحة التحكم', 'brandkey' ) . '</a></li></ul>';
-		}
+                        wp_nav_menu( array( 'theme_location' => 'nav_sectors', 'container' => false, 'menu_class' => 'nav-section-list', 'depth' => 1 ) );
+                } else {
+                        echo '<ul class="nav-section-list"><li><a href="#">' . esc_html__( 'أضف قائمة من لوحة التحكم', 'brandkey' ) . '</a></li></ul>';
+                }
         ?>
       </div>
 
@@ -114,28 +114,28 @@
     <nav class="nav-links" aria-label="<?php esc_attr_e( 'روابط سريعة', 'brandkey' ); ?>">
       <?php
       if ( has_nav_menu( 'nav_quick_links' ) ) {
-		  wp_nav_menu( array( 'theme_location' => 'nav_quick_links', 'container' => false, 'walker' => new BK_Nav_Walker(), 'depth' => 1 ) );
-	  } else {
-		  // قائمة افتراضية
-		  $defaults = array(
-			  array( 'title' => __( 'الرئيسية', 'brandkey' ), 'url' => home_url( '/' ), 'icon' => 'home' ),
-			  array( 'title' => __( 'تدريب الشركات', 'brandkey' ), 'url' => home_url( '/training' ), 'icon' => 'training' ),
-			  array( 'title' => __( 'استشارات التسويق', 'brandkey' ), 'url' => home_url( '/consulting' ), 'icon' => 'consulting' ),
-			  array( 'title' => __( 'معرض الأعمال', 'brandkey' ), 'url' => home_url( '/portfolio' ), 'icon' => 'portfolio' ),
-			  array( 'title' => __( 'الباقات والأسعار', 'brandkey' ), 'url' => home_url( '/pricing' ), 'icon' => 'pricing' ),
-			  array( 'title' => __( 'منظومة التكامل', 'brandkey' ), 'url' => home_url( '/integration' ), 'icon' => 'integration' ),
-			  array( 'title' => __( 'من نحن', 'brandkey' ), 'url' => home_url( '/about' ), 'icon' => 'about' ),
-			  array( 'title' => __( 'المدونة', 'brandkey' ), 'url' => home_url( '/blog' ), 'icon' => 'blog' ),
-		  );
-		  foreach ( $defaults as $i => $d ) {
-			  $svg = bk_get_nav_icon( $d['icon'] );
-			  echo '<a href="' . esc_url( $d['url'] ) . '" class="nav-link" data-index="' . esc_attr( $i ) . '">';
-			  echo '<span class="nav-link-icon">' . $svg . '</span>';
-			  echo '<span class="nav-link-text">' . esc_html( $d['title'] ) . '</span>';
-			  echo '<span class="nav-link-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 3L4 7L9 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
-			  echo '</a>';
-		  }
-	  }
+                  wp_nav_menu( array( 'theme_location' => 'nav_quick_links', 'container' => false, 'items_wrap' => '%3$s', 'walker' => new BK_Nav_Walker(), 'depth' => 1 ) );
+          } else {
+                  // قائمة افتراضية
+                  $defaults = array(
+                          array( 'title' => __( 'الرئيسية', 'brandkey' ), 'url' => home_url( '/' ), 'icon' => 'home' ),
+                          array( 'title' => __( 'تدريب الشركات', 'brandkey' ), 'url' => home_url( '/training' ), 'icon' => 'training' ),
+                          array( 'title' => __( 'استشارات التسويق', 'brandkey' ), 'url' => home_url( '/consulting' ), 'icon' => 'consulting' ),
+                          array( 'title' => __( 'معرض الأعمال', 'brandkey' ), 'url' => home_url( '/portfolio' ), 'icon' => 'portfolio' ),
+                          array( 'title' => __( 'الباقات والأسعار', 'brandkey' ), 'url' => home_url( '/pricing' ), 'icon' => 'pricing' ),
+                          array( 'title' => __( 'منظومة التكامل', 'brandkey' ), 'url' => home_url( '/integration' ), 'icon' => 'integration' ),
+                          array( 'title' => __( 'من نحن', 'brandkey' ), 'url' => home_url( '/about' ), 'icon' => 'about' ),
+                          array( 'title' => __( 'المدونة', 'brandkey' ), 'url' => home_url( '/blog' ), 'icon' => 'blog' ),
+                  );
+                  foreach ( $defaults as $i => $d ) {
+                          $svg = bk_get_nav_icon( $d['icon'] );
+                          echo '<a href="' . esc_url( $d['url'] ) . '" class="nav-link" data-index="' . esc_attr( $i ) . '">';
+                          echo '<span class="nav-link-icon">' . $svg . '</span>';
+                          echo '<span class="nav-link-text">' . esc_html( $d['title'] ) . '</span>';
+                          echo '<span class="nav-link-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 3L4 7L9 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+                          echo '</a>';
+                  }
+          }
       ?>
     </nav>
 
