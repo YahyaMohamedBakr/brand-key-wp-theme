@@ -12,25 +12,25 @@ get_header();
 <main class="page-content" id="pageContent">
 
   <!-- ===================== هيرو الصفحة الرئيسية ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'hero' ) ) : ?>
+  <?php $fp_id = get_option('page_on_front'); if ( bk_meta_enabled('bk_front_hero_enable' ) || !get_post_meta($fp_id, 'bk_front_hero_enable', true)) : ?>
   <section class="hero" id="hero">
     <div class="hero-container">
 
       <div class="hero-text">
         <h1 class="hero-title">
-          <?php echo esc_html( bk_section( 'front_page', 'hero', 'title' ) ); ?>
+          <?php echo esc_html( bk_meta('bk_front_hero_title', $fp_id, 'حلول تسويق رقمي متكاملة تنمو مع أعمالك') ); ?>
         </h1>
         <p class="hero-subtitle">
-          <?php echo esc_html( bk_section( 'front_page', 'hero', 'desc' ) ); ?>
+          <?php echo esc_html( bk_meta('bk_front_hero_desc', $fp_id) ); ?>
         </p>
         <div class="hero-cta-group">
           <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="hero-cta hero-cta--primary">
-            <span>ابدأ الآن، مجاناً</span>
+            <span><?php echo esc_html( bk_meta('bk_front_hero_primary_text', $fp_id, 'ابدأ الآن، مجاناً') ); ?></span>
             <img src="<?php bk_icon( 'start-icon.svg' ); ?>" alt="" class="hero-cta-icon" aria-hidden="true" />
           </a>
           <a href="#services" class="hero-cta hero-cta--secondary">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3V13M8 13L13 8M8 13L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>تعرف على المزيد</span>
+            <span><?php echo esc_html( bk_meta('bk_front_hero_ghost_text', $fp_id, 'تعرف على المزيد') ); ?></span>
           </a>
         </div>
         <div class="hero-stats">
@@ -71,14 +71,14 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== سيكشن الخدمات ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'services' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_services_enable', $fp_id) ) : ?>
   <section class="services" id="services">
     <div class="services-container">
       <div class="services-grid">
         <div class="services-sidebar" id="servicesSidebar">
-          <h2 class="services-title"><?php echo esc_html( bk_section( 'front_page', 'services', 'title' ) ); ?></h2>
+          <h2 class="services-title"><?php echo esc_html( bk_meta('bk_front_services_title', $fp_id, 'خدماتنا') ); ?></h2>
           <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line services-heading-line" aria-hidden="true" />
-          <p class="services-desc"><?php echo esc_html( bk_section( 'front_page', 'services', 'desc' ) ); ?></p>
+          <p class="services-desc"><?php echo esc_html( bk_meta('bk_front_services_desc', $fp_id) ); ?></p>
           <div class="services-actions">
             <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="services-btn-primary">
               <span>ابدأ رحلتك معنا الآن</span>
@@ -168,15 +168,15 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== سيكشن القطاعات ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'sectors' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_sectors_enable', $fp_id) ) : ?>
   <section class="sectors" id="sectors">
     <img src="<?php bk_icon( 'sectors-vector.png' ); ?>" alt="" class="sectors-deco sectors-deco--vector" aria-hidden="true" />
     <img src="<?php bk_icon( 'sectors-frame.png' ); ?>" alt="" class="sectors-deco sectors-deco--frame" aria-hidden="true" />
     <div class="sectors-container">
       <header class="sectors-head" id="sectorsHead">
-        <h2 class="sectors-title"><?php echo esc_html( bk_section( 'front_page', 'sectors', 'title' ) ); ?></h2>
+        <h2 class="sectors-title"><?php echo esc_html( bk_meta('bk_front_sectors_title', $fp_id, 'حلول مصممة لكل قطاع') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line sectors-heading-line" aria-hidden="true" />
-        <p class="sectors-desc"><?php echo esc_html( bk_section( 'front_page', 'sectors', 'desc' ) ); ?></p>
+        <p class="sectors-desc"><?php echo esc_html( bk_meta('bk_front_sectors_desc', $fp_id) ); ?></p>
       </header>
       <div class="sectors-grid" id="sectorsGrid">
         <?php
@@ -217,14 +217,14 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== سيكشن CTA الثاني ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'cta2' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_cta2_enable', $fp_id) ) : ?>
   <section class="cta2" id="cta2">
     <img src="<?php bk_icon( 'cta2-keyhole.png' ); ?>" alt="" class="cta2-keyhole" aria-hidden="true" />
     <div class="cta2-container">
       <header class="cta2-head" id="cta2Head">
-        <h2 class="cta2-title"><?php echo esc_html( bk_section( 'front_page', 'cta2', 'title' ) ); ?></h2>
+        <h2 class="cta2-title"><?php echo esc_html( bk_meta('bk_front_cta2_title', $fp_id, 'ابدأ رحلتك مع Brandkey') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line cta2-heading-line" aria-hidden="true" />
-        <p class="cta2-desc"><?php echo esc_html( bk_section( 'front_page', 'cta2', 'desc' ) ); ?></p>
+        <p class="cta2-desc"><?php echo esc_html( bk_meta('bk_front_cta2_desc', $fp_id) ); ?></p>
       </header>
       <div class="cta2-grid" id="cta2Grid">
         <article class="cta2-card" data-card="0">
@@ -232,7 +232,7 @@ get_header();
           <div class="cta2-card-body">
             <h3 class="cta2-card-title">خطة عملك، مُصمّمة</h3>
             <p class="cta2-card-desc">نصنع لك خطة عمل متكاملة ومُصمّدة خصيصاً لاحتياجاتك، مع التركيز على الجودة والفعالية لضمان نجاح مشروعك.</p>
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="cta2-btn cta2-btn--primary"><span>ابدأ الآن، مجاناً</span><img src="<?php bk_icon( 'start-icon.svg' ); ?>" alt="" /></a>
+            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="cta2-btn cta2-btn--primary"><span><?php echo esc_html( bk_meta('bk_front_hero_primary_text', $fp_id, 'ابدأ الآن، مجاناً') ); ?></span><img src="<?php bk_icon( 'start-icon.svg' ); ?>" alt="" /></a>
           </div>
         </article>
         <article class="cta2-card cta2-card--accent" data-card="1">
@@ -257,14 +257,14 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== سيكشن آخر أعمالنا ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'portfolio' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_portfolio_enable', $fp_id) ) : ?>
   <section class="portfolio" id="portfolio">
     <div class="portfolio-container">
       <header class="portfolio-head" id="portfolioHead">
         <span class="portfolio-eyebrow">أعمالنا الأخيرة</span>
-        <h2 class="portfolio-title"><?php echo esc_html( bk_section( 'front_page', 'portfolio', 'title' ) ); ?></h2>
+        <h2 class="portfolio-title"><?php echo esc_html( bk_meta('bk_front_portfolio_title', $fp_id, 'آخر أعمالنا') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line portfolio-heading-line" aria-hidden="true" />
-        <p class="portfolio-desc"><?php echo esc_html( bk_section( 'front_page', 'portfolio', 'desc' ) ); ?></p>
+        <p class="portfolio-desc"><?php echo esc_html( bk_meta('bk_front_portfolio_desc', $fp_id) ); ?></p>
       </header>
       <div class="portfolio-slider" id="portfolioSlider" aria-roledescription="carousel" aria-label="آخر أعمالنا">
         <div class="portfolio-viewport">
@@ -317,13 +317,13 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== سيكشن الأسعار ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'pricing' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_pricing_enable', $fp_id) ) : ?>
   <section class="pricing" id="pricing">
     <div class="pricing-container">
       <header class="pricing-head" id="pricingHead">
-        <h2 class="pricing-title"><?php echo esc_html( bk_section( 'front_page', 'pricing', 'title' ) ); ?></h2>
+        <h2 class="pricing-title"><?php echo esc_html( bk_meta('bk_front_pricing_title', $fp_id, 'باقات مرنة.. ونتائج غير محدودة') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line pricing-heading-line" aria-hidden="true" />
-        <p class="pricing-desc"><?php echo esc_html( bk_section( 'front_page', 'pricing', 'desc' ) ); ?></p>
+        <p class="pricing-desc"><?php echo esc_html( bk_meta('bk_front_pricing_desc', $fp_id) ); ?></p>
       </header>
       <div class="pricing-grid" id="pricingGrid">
         <article class="pricing-card" data-card="0">
@@ -396,13 +396,13 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== طريقتنا في الشغل ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'how' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_how_enable', $fp_id) ) : ?>
   <section class="how" id="how">
     <div class="how-container">
       <header class="how-head" id="howHead">
-        <h2 class="how-title"><?php echo esc_html( bk_section( 'front_page', 'how', 'title' ) ); ?></h2>
+        <h2 class="how-title"><?php echo esc_html( bk_meta('bk_front_how_title', $fp_id, 'طريقتنا في الشغل') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line how-heading-line" aria-hidden="true" />
-        <p class="how-desc"><?php echo esc_html( bk_section( 'front_page', 'how', 'desc' ) ); ?></p>
+        <p class="how-desc"><?php echo esc_html( bk_meta('bk_front_how_desc', $fp_id) ); ?></p>
       </header>
       <div class="how-grid">
         <div class="how-visual"><img src="<?php bk_icon( 'how-frame.svg' ); ?>" alt="Brand Key" class="how-frame" /></div>
@@ -418,13 +418,13 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== عملاء وثقوا فينا ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'clients' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_clients_enable', $fp_id) ) : ?>
   <section class="clients" id="clients">
     <div class="clients-container">
       <header class="clients-head" id="clientsHead">
-        <h2 class="clients-title"><?php echo esc_html( bk_section( 'front_page', 'clients', 'title' ) ); ?></h2>
+        <h2 class="clients-title"><?php echo esc_html( bk_meta('bk_front_clients_title', $fp_id, 'عملاء وثقوا فينا') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line clients-heading-line" aria-hidden="true" />
-        <p class="clients-desc"><?php echo esc_html( bk_section( 'front_page', 'clients', 'desc' ) ); ?></p>
+        <p class="clients-desc"><?php echo esc_html( bk_meta('bk_front_clients_desc', $fp_id) ); ?></p>
       </header>
       <div class="clients-marquee" id="clientsMarquee">
         <div class="clients-row clients-row--rtl"><div class="clients-track">
@@ -443,13 +443,13 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== ماذا يقول عملاؤنا ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'testimonials' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_test_enable', $fp_id) ) : ?>
   <section class="testimonials" id="testimonials">
     <div class="testimonials-container">
       <header class="testimonials-head" id="testimonialsHead">
-        <h2 class="testimonials-title"><?php echo esc_html( bk_section( 'front_page', 'testimonials', 'title' ) ); ?></h2>
+        <h2 class="testimonials-title"><?php echo esc_html( bk_meta('bk_front_test_title', $fp_id, 'ماذا يقول عملاؤنا') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line testimonials-heading-line" aria-hidden="true" />
-        <p class="testimonials-desc"><?php echo esc_html( bk_section( 'front_page', 'testimonials', 'desc' ) ); ?></p>
+        <p class="testimonials-desc"><?php echo esc_html( bk_meta('bk_front_test_desc', $fp_id) ); ?></p>
       </header>
       <div class="testimonials-grid" id="testimonialsGrid">
         <article class="testimonial-card" data-card="0">
@@ -481,31 +481,31 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== مستعد تبدأ رحلتك الرقمية ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'cta_final' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_cta_enable', $fp_id) ) : ?>
   <section class="cta-final" id="ctaFinal">
     <img src="<?php bk_icon( 'cta-vector-right.svg' ); ?>" alt="" class="cta-final-deco cta-final-deco--right" aria-hidden="true" />
     <img src="<?php bk_icon( 'cta-vector-left.svg' ); ?>" alt="" class="cta-final-deco cta-final-deco--left" aria-hidden="true" />
     <div class="cta-final-container">
       <div class="cta-final-text" id="ctaFinalText">
-        <h2 class="cta-final-title"><?php echo esc_html( bk_section( 'front_page', 'cta_final', 'title' ) ); ?></h2>
+        <h2 class="cta-final-title"><?php echo esc_html( bk_meta('bk_front_cta_title', $fp_id, 'مستعد تبدأ رحلتك الرقمية!') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line cta-final-heading-line" aria-hidden="true" />
-        <p class="cta-final-desc"><?php echo esc_html( bk_section( 'front_page', 'cta_final', 'desc' ) ); ?></p>
+        <p class="cta-final-desc"><?php echo esc_html( bk_meta('bk_front_cta_desc', $fp_id) ); ?></p>
       </div>
       <div class="cta-final-action" id="ctaFinalAction">
-        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="cta-final-btn"><span>تواصل معنا الآن!</span><img src="<?php bk_icon( 'cta-arrow.svg' ); ?>" alt="" /></a>
+        <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="cta-final-btn"><span><?php echo esc_html( bk_meta('bk_front_cta_btn_text', $fp_id, 'تواصل معنا الآن!') ); ?></span><img src="<?php bk_icon( 'cta-arrow.svg' ); ?>" alt="" /></a>
       </div>
     </div>
   </section>
   <?php endif; ?>
 
   <!-- ===================== الأسئلة الشائعة ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'faq' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_faq_enable', $fp_id) ) : ?>
   <section class="faq" id="faq">
     <div class="faq-container">
       <header class="faq-head" id="faqHead">
-        <h2 class="faq-title"><?php echo esc_html( bk_section( 'front_page', 'faq', 'title' ) ); ?></h2>
+        <h2 class="faq-title"><?php echo esc_html( bk_meta('bk_front_faq_title', $fp_id, 'الأسئلة الشائعة') ); ?></h2>
         <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line faq-heading-line" aria-hidden="true" />
-        <p class="faq-desc"><?php echo esc_html( bk_section( 'front_page', 'faq', 'desc' ) ); ?></p>
+        <p class="faq-desc"><?php echo esc_html( bk_meta('bk_front_faq_desc', $fp_id) ); ?></p>
       </header>
       <div class="faq-grid" id="faqGrid">
         <?php
@@ -540,14 +540,14 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== آخر أخبارنا ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'blog' ) ) : ?>
+  <?php if ( bk_meta_enabled('bk_front_blog_enable', $fp_id) ) : ?>
   <section class="blog" id="blog">
     <div class="blog-container">
       <header class="blog-head" id="blogHead">
         <div class="blog-head-text">
-          <h2 class="blog-title"><?php echo esc_html( bk_section( 'front_page', 'blog', 'title' ) ); ?></h2>
+          <h2 class="blog-title"><?php echo esc_html( bk_meta('bk_front_blog_title', $fp_id, 'آخر أخبارنا') ); ?></h2>
           <img src="<?php bk_icon( 'heading-line.png' ); ?>" alt="" class="heading-line blog-heading-line" aria-hidden="true" />
-          <p class="blog-desc"><?php echo esc_html( bk_section( 'front_page', 'blog', 'desc' ) ); ?></p>
+          <p class="blog-desc"><?php echo esc_html( bk_meta('bk_front_blog_desc', $fp_id) ); ?></p>
         </div>
         <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="blog-more-link"><span>المزيد</span><img src="<?php bk_icon( 'more-arrow.svg' ); ?>" alt="" /></a>
       </header>
