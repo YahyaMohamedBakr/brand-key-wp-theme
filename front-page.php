@@ -12,7 +12,7 @@ get_header();
 <main class="page-content" id="pageContent">
 
   <!-- ===================== هيرو الصفحة الرئيسية ===================== -->
-  <?php $fp_id = get_option('page_on_front'); if ( bk_meta_enabled('bk_front_hero_enable' ) || !get_post_meta($fp_id, 'bk_front_hero_enable', true)) : ?>
+  <?php $fp_id = get_option('page_on_front'); if ( bk_meta_enabled('bk_front_hero_enable', $fp_id) ) : ?>
   <section class="hero" id="hero">
     <div class="hero-container">
 
