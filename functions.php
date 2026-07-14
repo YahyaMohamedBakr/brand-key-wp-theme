@@ -13,8 +13,6 @@ define( 'BK_URI', get_template_directory_uri() );
 /**
  * Include files
  */
-require_once get_template_directory() . '/inc/sections.php';
-require_once get_template_directory() . '/inc/customizer.php';
 require_once get_template_directory() . '/inc/seeder.php';
 require_once get_template_directory() . '/inc/meta-fields.php';
 

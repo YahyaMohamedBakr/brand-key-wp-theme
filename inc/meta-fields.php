@@ -512,5 +512,9 @@ function bk_meta_items( $key, $post_id = null ) {
 function bk_meta_enabled( $key, $post_id = null ) {
         if ( ! $post_id ) $post_id = get_the_ID();
         $val = get_post_meta( $post_id, $key, true );
+        // لو المفتاح مش موجود في الداتابيز خالص → مفعّل افتراضياً
+        // لو موجود = '0' → معطّل
+        // لو موجود = '1' أو أي قيمة تانية → مفعّل
+        if ( $val === '' || $val === false || $val === null ) return true;
         return $val !== '0';
 }

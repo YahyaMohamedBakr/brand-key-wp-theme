@@ -143,7 +143,7 @@ get_header();
   <?php endif; ?>
 
   <!-- ===================== سيكشن الاستشارات ===================== -->
-  <?php if ( bk_section_enabled( 'front_page', 'consult' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="consult" id="consult">
     <img src="<?php bk_icon( 'hero-key-bg.svg' ); ?>" alt="" class="consult-key-bg" aria-hidden="true" />
     <div class="consult-container">

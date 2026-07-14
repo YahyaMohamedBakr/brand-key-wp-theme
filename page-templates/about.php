@@ -21,7 +21,7 @@ get_header();
   </div>
 
   <!-- سيكشن 1: منظومة التكامل.. وداعاً للتشتت -->
-  <?php if ( bk_section_enabled( 'about', 'hero' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="about-explore" id="aboutExplore">
     <div class="about-explore-container">
       <header class="about-explore-head" id="aboutExploreHead">
@@ -39,7 +39,7 @@ get_header();
   <?php endif; ?>
 
   <!-- سيكشن 2: رؤيتنا -->
-  <?php if ( bk_section_enabled( 'about', 'vision' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="about-us" id="aboutUs">
     <div class="about-us-container">
       <div class="about-us-visual" id="aboutUsVisual">
@@ -58,7 +58,7 @@ get_header();
   <?php endif; ?>
 
   <!-- سيكشن 3: رسالتنا -->
-  <?php if ( bk_section_enabled( 'about', 'mission' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="about-why" id="aboutWhy">
     <div class="about-why-container">
       <div class="about-why-content" id="aboutWhyContent">
@@ -77,7 +77,7 @@ get_header();
   <?php endif; ?>
 
   <!-- سيكشن 4: لا تفوت الفرصة -->
-  <?php if ( bk_section_enabled( 'about', 'security' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="about-security" id="aboutSecurity">
     <div class="about-security-container">
       <header class="about-security-head" id="aboutSecurityHead">
@@ -108,7 +108,7 @@ get_header();
   <?php endif; ?>
 
   <!-- سيكشن 5: العقول خلف المنظومة (سلايدر التيم) -->
-  <?php if ( bk_section_enabled( 'about', 'team' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="about-team" id="aboutTeam">
     <div class="about-team-container">
       <header class="about-team-head" id="aboutTeamHead">
@@ -151,12 +151,12 @@ get_header();
   <?php endif; ?>
 
   <!-- السيكشنات المكررة -->
-  <?php if ( bk_section_enabled( 'about', 'how' ) ) get_template_part( 'template-parts/shared', 'how' ); ?>
-  <?php if ( bk_section_enabled( 'about', 'clients' ) ) get_template_part( 'template-parts/shared', 'clients' ); ?>
-  <?php if ( bk_section_enabled( 'about', 'testimonials' ) ) get_template_part( 'template-parts/shared', 'testimonials' ); ?>
-  <?php if ( bk_section_enabled( 'about', 'cta_final' ) ) get_template_part( 'template-parts/shared', 'cta-final' ); ?>
-  <?php if ( bk_section_enabled( 'about', 'faq' ) ) get_template_part( 'template-parts/shared', 'faq' ); ?>
-  <?php if ( bk_section_enabled( 'about', 'blog' ) ) get_template_part( 'template-parts/shared', 'blog' ); ?>
+  <?php if ( true ) get_template_part( 'template-parts/shared', 'how' ); ?>
+  <?php if ( true ) get_template_part( 'template-parts/shared', 'clients' ); ?>
+  <?php if ( true ) get_template_part( 'template-parts/shared', 'testimonials' ); ?>
+  <?php if ( true ) get_template_part( 'template-parts/shared', 'cta-final' ); ?>
+  <?php if ( true ) get_template_part( 'template-parts/shared', 'faq' ); ?>
+  <?php if ( true ) get_template_part( 'template-parts/shared', 'blog' ); ?>
 
 </main>
 <?php get_footer(); ?>

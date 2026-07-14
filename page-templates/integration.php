@@ -21,7 +21,7 @@ get_header();
   </div>
 
   <!-- سيكشن 1: ما المقصود بمنظومة التكامل التسويقي؟ -->
-  <?php if ( bk_section_enabled( 'integration', 'hero' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="about-us" id="integrationVision">
     <div class="about-us-container">
       <div class="about-us-visual" id="integrationVisionVisual">
@@ -41,7 +41,7 @@ get_header();
   <?php endif; ?>
 
   <!-- سيكشن 2: لماذا التكامل وليس الاختيار العشوائي؟ -->
-  <?php if ( bk_section_enabled( 'integration', 'compare' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="integration-compare" id="integrationCompare">
     <div class="integration-compare-container">
       <header class="integration-compare-head" id="integrationCompareHead">
@@ -80,7 +80,7 @@ get_header();
   <?php endif; ?>
 
   <!-- سيكشن 3: هل تعرف هذه المشكلات؟ (Timeline) -->
-  <?php if ( bk_section_enabled( 'integration', 'timeline' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="integration-timeline" id="integrationTimeline">
     <div class="integration-timeline-container">
       <header class="integration-timeline-head" id="integrationTimelineHead">
@@ -131,10 +131,10 @@ get_header();
   <?php endif; ?>
 
   <!-- سيكشن 4: مستعد تبدأ رحلتك الرقمية؟ -->
-  <?php if ( bk_section_enabled( 'integration', 'cta_final' ) ) get_template_part( 'template-parts/shared', 'cta-final' ); ?>
+  <?php if ( true ) get_template_part( 'template-parts/shared', 'cta-final' ); ?>
 
   <!-- سيكشن 5: ما الذي قد تشمله منظومتك؟ -->
-  <?php if ( bk_section_enabled( 'integration', 'services' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="integration-services" id="integrationServices">
     <div class="integration-services-container">
       <header class="integration-services-head" id="integrationServicesHead">
@@ -172,7 +172,7 @@ get_header();
   <?php endif; ?>
 
   <!-- سيكشن 6: ماذا تحصل في النهاية؟ -->
-  <?php if ( bk_section_enabled( 'integration', 'deliverables' ) ) : ?>
+  <?php if ( true ) : ?>
   <section class="integration-deliverables" id="integrationDeliverables">
     <div class="integration-deliverables-container">
       <header class="integration-deliverables-head" id="integrationDeliverablesHead">
