@@ -1,21 +1,13 @@
 /*
-Theme Name: Brand Key Theme
+Theme Name: Brand Key
 Theme URI: https://brandkey.com
 Author: Yahya Mohamed Bakr
-Author URI: https://github.com/YahyaMohamedBakr
-Description: WordPress theme for Brand Key — a digital marketing solutions company. Full RTL Arabic support, custom post types for projects/services/sectors, customizable sections, and reusable components. Built with vanilla CSS/JS (no frameworks).
+Description: WordPress theme for Brand Key — digital marketing solutions. Full RTL Arabic, based on the static HTML template.
 Version: 1.0.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
 License: GPL v2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: brandkey
-Tags: rtl-language-support, custom-logo, custom-menu, custom-colors, featured-images, translation-ready, block-styles, wide-blocks
+Tags: rtl-language-support, custom-logo, custom-menu, featured-images
 */
-
-/* ============================================================
-   Brand Key WordPress Theme
-   - All styles are in assets/css/shared.css
-   - This file contains theme metadata only (required by WordPress)
-   ============================================================ */

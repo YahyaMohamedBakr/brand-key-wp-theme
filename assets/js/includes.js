@@ -368,27 +368,27 @@ var HERO_HTML = `<!-- ==========================================================
     <div class="inner-hero-frame-photo" style="background-image: url('${heroData.photo}');"></div>
     <!-- أوفرلاي أسود فوق الصورة عشان النص يظهر -->
     <div class="inner-hero-frame-overlay"></div>
+  </div>
 
-    <!-- المفتاح في النوتش (top-left) — جوه الفريم عشان يتحرك معاه -->
-    <img src="icons/pricing-key.svg" alt="" class="inner-hero-key" aria-hidden="true" />
+  <!-- المفتاح في النوتش (top-left) -->
+  <img src="icons/pricing-key.svg" alt="" class="inner-hero-key" aria-hidden="true" />
 
-    <!-- المحتوى (متوسط جوه الفريم) — جوه الفريم عشان يفضل متمركز -->
-    <div class="inner-hero-content">
-      <h1 class="inner-hero-title">${heroData.title}</h1>
-      <div class="inner-hero-body">
-        <p class="inner-hero-desc">
-          ${heroData.desc}
-        </p>
-        <div class="inner-hero-actions">
-          <a href="${heroData.primaryHref}" class="inner-hero-btn inner-hero-btn--primary">
-            <span>${heroData.primaryText}</span>
-            <img src="${heroData.primaryIcon}" alt="" />
-          </a>
-          <a href="${heroData.ghostHref}" class="inner-hero-btn inner-hero-btn--ghost">
-            <img src="${heroData.ghostIcon}" alt="" />
-            <span>${heroData.ghostText}</span>
-          </a>
-        </div>
+  <!-- المحتوى (متوسط فوق الفريم) -->
+  <div class="inner-hero-content">
+    <h1 class="inner-hero-title">${heroData.title}</h1>
+    <div class="inner-hero-body">
+      <p class="inner-hero-desc">
+        ${heroData.desc}
+      </p>
+      <div class="inner-hero-actions">
+        <a href="${heroData.primaryHref}" class="inner-hero-btn inner-hero-btn--primary">
+          <span>${heroData.primaryText}</span>
+          <img src="${heroData.primaryIcon}" alt="" />
+        </a>
+        <a href="${heroData.ghostHref}" class="inner-hero-btn inner-hero-btn--ghost">
+          <img src="${heroData.ghostIcon}" alt="" />
+          <span>${heroData.ghostText}</span>
+        </a>
       </div>
     </div>
   </div>

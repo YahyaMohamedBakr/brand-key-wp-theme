@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file
+ * Main template — fallback
  *
  * @package BrandKey
  */
@@ -8,40 +8,23 @@
 get_header();
 ?>
 
-	<div class="page-content">
-		<div class="container">
-			<?php
-			if ( have_posts() ) :
+<main class="page-content" id="pageContent">
+  <div style="padding: 120px 24px 80px; text-align: center;">
+    <h1 style="font-size: 30px; color: #0E233F; margin-bottom: 20px;"><?php bloginfo( 'name' ); ?></h1>
+    <p style="font-size: 18px; color: #64748B; max-width: 600px; margin: 0 auto 40px;"><?php bloginfo( 'description' ); ?></p>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <?php
+      if ( have_posts() ) :
+        while ( have_posts() ) : the_post();
+          the_title( '<h2 style="font-size: 24px; color: #0E233F; margin: 30px 0 15px;"><a href="' . esc_url( get_permalink() ) . '" style="text-decoration: none; color: inherit;">', '</a></h2>' );
+          echo '<div style="color: #475569; line-height: 1.8;">' . wp_trim_words( get_the_content(), 40 ) . '</div>';
+        endwhile;
+      else :
+        echo '<p>' . esc_html__( 'لا يوجد محتوى بعد.', 'brandkey' ) . '</p>';
+      endif;
+      ?>
+    </div>
+  </div>
+</main>
 
-				if ( is_home() && ! is_front_page() ) :
-					?>
-					<header class="page-header">
-						<h1 class="page-title"><?php single_post_title(); ?></h1>
-					</header>
-					<?php
-				endif;
-
-				/* Start the Loop */
-				while ( have_posts() ) :
-					the_post();
-
-					/*
-					 * Include the Post-Type-specific template for the content.
-					 */
-					get_template_part( 'template-parts/content', get_post_type() );
-
-				endwhile;
-
-				the_posts_navigation();
-
-			else :
-
-				get_template_part( 'template-parts/content', 'none' );
-
-			endif;
-			?>
-		</div>
-	</div>
-
-<?php
-get_footer();
+<?php get_footer(); ?>
