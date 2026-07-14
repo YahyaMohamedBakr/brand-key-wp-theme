@@ -226,6 +226,7 @@ function bk_repeater_start( $name, $label, $fields_config, $values = array() ) {
 function bk_render_front_hero( $post ) {
         wp_nonce_field( 'bk_meta_nonce', 'bk_meta_nonce_field' );
         $g = 'bk_front_hero_';
+        bk_field_checkbox( $g.'enable', 'تفعيل السيكشن', get_post_meta( $post->ID, $g.'enable', true ) !== '0' );
         ?>
         <div class="bk-meta-grid">
                 <?php
